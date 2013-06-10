@@ -23,6 +23,8 @@
         %td= audio.created_at
         %td= audio.updated_at
         %td
+          = link_to "Download", audio.source.url(:original, false), :class => 'btn btn-mini btn-primary'
           = link_to t('.destroy', :default => t("helpers.links.destroy")), audio_path(audio), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-mini btn-danger'
+
 
 = link_to t('.new', :default => t("helpers.links.new")), new_audio_path, :class => 'btn btn-primary'
