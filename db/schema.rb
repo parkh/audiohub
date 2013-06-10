@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130609062309) do
+ActiveRecord::Schema.define(version: 20130609214451) do
+
+  create_table "audios", force: true do |t|
+    t.string   "aasm_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "source_file_name"
+    t.string   "source_content_type"
+    t.integer  "source_file_size"
+    t.datetime "source_updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"

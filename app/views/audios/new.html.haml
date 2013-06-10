@@ -1,0 +1,8 @@
+%h2 New Audio
+= form_for @audio, :html => { :multipart => true } do |f|
+  %div
+    = f.label :source
+    %br/
+    = f.file_field :source
+  %div= f.submit "Submit"
+= link_to "Back", audios_path
