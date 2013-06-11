@@ -47,3 +47,5 @@ gem "devise", "~> 3.0.0.rc"
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
 gem "acts_as_state_machine"
 gem "aasm"
+
+gem 'sidekiq'

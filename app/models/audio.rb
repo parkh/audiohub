@@ -4,7 +4,8 @@ class Audio < ActiveRecord::Base
 
   validates_attachment_presence :source
 #  validates_attachment_content_type :source, :content_type => [ 'application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3' ]
-  validates_attachment_size :source, :less_than => 60.megabytes
+  validates_attachment_size :source, :less_than => 100.megabytes
+
 
 
   include AASM
@@ -29,28 +30,7 @@ class Audio < ActiveRecord::Base
   end
 
 
-  def convert
-    self.convert!
-    success = system(convert_command)
-    if success && $?.exitstatus == 0
-      self.converted!
-    else
-      self.failure!
-    end
-  end
- 
   protected
- 
-  def convert_command
-    stripped_path = source.path.chomp(File.extname(source.path))
-   
-    command = <<-end_command
-      ffmpeg -i #{ source.path } -ac 1 -ab 64k #{ stripped_path }_converted.mp3
-      rm #{ source.path }
-      mv #{ stripped_path }_converted.mp3 #{ stripped_path }.mp3
-    end_command
-    command
-  end
  
   def update_attributes
     stripped_name = source.original_filename.chomp(File.extname(source.original_filename))

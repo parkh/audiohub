@@ -12,7 +12,7 @@ class AudiosController < ApplicationController
   def create
   	@audio = Audio.new(audio_params)
     if @audio.save
-      @audio.convert
+      ConversionWorker.perform_async(@audio.id)
       redirect_to audios_url, notice: 'Audio has been uploaded'
     else
       render action: 'new'
