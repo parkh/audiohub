@@ -3,11 +3,11 @@ class AudiosController < ApplicationController
   before_action :set_audio, only: [:show, :destroy]
 
   def index
-  	@audios = current_user.audios.all
+  	@audios = Audio.all
   end
 
   def new
-  	@audio = current_user.audios.new
+  	@audio = Audio.new
   end
 
   def create
