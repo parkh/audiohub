@@ -1,19 +1,20 @@
 class AudiosController < ApplicationController
+  before_filter :authenticate_user!
   before_action :set_audio, only: [:show, :destroy]
 
   def index
-  	@audios = Audio.all
+  	@audios = current_user.audios.all
   end
 
   def new
-  	@audio = Audio.new
+  	@audio = current_user.audios.new
   end
 
   def create
-  	@audio = Audio.new(audio_params)
+  	@audio = current_user.audios.new(audio_params)
     if @audio.save
       ConversionWorker.perform_async(@audio.id)
-      redirect_to audios_url, notice: 'Audio has been uploaded'
+      redirect_to root_url, notice: 'Audio has been uploaded'
     else
       render action: 'new'
     end
@@ -24,13 +25,13 @@ class AudiosController < ApplicationController
 
   def destroy
     @audio.destroy
-    redirect_to audios_url
+    redirect_to root_url, notice: 'Audio has been deleted'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_audio
-      @audio = Audio.find(params[:id])
+      @audio = current_user.audios.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

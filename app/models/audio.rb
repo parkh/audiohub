@@ -1,7 +1,7 @@
 class Audio < ActiveRecord::Base
+  belongs_to :user
 
   has_attached_file :source
-
   validates_attachment_presence :source
 #  validates_attachment_content_type :source, :content_type => [ 'application/mp3', 'application/x-mp3', 'audio/mpeg', 'audio/mp3' ]
   validates_attachment_size :source, :less_than => 100.megabytes

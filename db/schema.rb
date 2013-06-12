@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130609214451) do
+ActiveRecord::Schema.define(version: 20130611215925) do
 
   create_table "audios", force: true do |t|
     t.string   "aasm_state"
@@ -21,7 +21,10 @@ ActiveRecord::Schema.define(version: 20130609214451) do
     t.string   "source_content_type"
     t.integer  "source_file_size"
     t.datetime "source_updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "audios", ["user_id"], name: "index_audios_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "name"
