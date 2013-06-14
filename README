@@ -1,0 +1,40 @@
+"Audiohub" is a my second test task, and my second project as well.
+Designed as web-app, where you can convert your audiofiles from any format to mp3. Also you can search through another users of this app, add them as friends, and, if they added you, you can browse there audiofiles.
+
+Technical assignment:
+
+	Design the service, that can take differrent formats of audiofiles - MP3, OGG, FLAC, and convert them all to MP3 (mono 64kbps).
+    
+	System must support registretion (devise), files uploading and dowloading. Convertating must flow through Resque or Sidekiq.
+
+	Users should be able to find other users by name or email and add them to friendlist. Also if another user also add you - you can browse his audios.
+
+	Use Twitter Bootstrap for a pleasant interface.
+
+Configuration:
+
+    Ryby 2.0.0p0
+
+    Rails 4.0.0.beta1
+
+    HAML 4.0.2
+
+    Twitter Bootsrap 2.2.6
+
+    Acts As State Machine 3.0.19
+
+    Devise 3.0.0.rc
+
+    Sidekiq 2.12.1
+
+    Twitter Bootstrap Rails 2.2.6
+
+Some problems, that I avoided:
+
+	No tests
+
+	Wild code
+
+	If name of file, that you try to upload, contains ")" (bracket), system falls in error
+
+	Type of uploaded file is not checking, so you can upload anything you like and have a predictable result at the end
