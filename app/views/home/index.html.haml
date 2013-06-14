@@ -1,1 +1,12 @@
 = render template: "audios/index"
+
+%h1 Friends
+%ul
+  - for friend in @friends
+    %li
+      =h friend.name
+      = link_to "audios", audios_path(:friend_id => friend)
+
+= form_tag users_path, method: :get do
+  = text_field_tag :search
+  = submit_tag 'Find Friends', name: nil

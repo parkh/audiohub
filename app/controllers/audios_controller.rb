@@ -3,11 +3,15 @@ class AudiosController < ApplicationController
   before_action :set_audio, only: [:show, :destroy]
 
   def index
-  	@audios = Audio.all
+    if params[:friend_id]
+      @audios = current_user.friends.find_by_id(params[:friend_id]).audios.all
+    else
+      @audios = current_user.audios.all
+    end
   end
 
   def new
-  	@audio = Audio.new
+  	@audio = current_user.audios.new
   end
 
   def create

@@ -1,8 +1,11 @@
 Audiohub::Application.routes.draw do
 
+  get "friendships/create"
+  get "friendships/destroy"
   devise_for :users
   resources :users
   resources :audios
+  resources :friendships
 
   get "home/index"
   # The priority is based upon order of creation: first created -> highest priority.

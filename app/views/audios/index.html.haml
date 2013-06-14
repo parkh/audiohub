@@ -1,16 +1,15 @@
-- model_class = Audio
 .page-header
-  %h1=t '.title', :default => model_class.model_name.human.pluralize
+  %h1=t '.title', :default => Audio.model_name.human.pluralize
 %table.table.table-striped
   %thead
     %tr
-      %th= model_class.human_attribute_name(:id)
-      %th= model_class.human_attribute_name(:source_content_type)
-      %th= model_class.human_attribute_name(:source_file_name)
-      %th= model_class.human_attribute_name(:source_file_size)
-      %th= model_class.human_attribute_name(:aasm_state)
-      %th= model_class.human_attribute_name(:created_at)
-      %th= model_class.human_attribute_name(:updated_at)
+      %th= Audio.human_attribute_name(:id)
+      %th= Audio.human_attribute_name(:source_content_type)
+      %th= Audio.human_attribute_name(:source_file_name)
+      %th= Audio.human_attribute_name(:source_file_size)
+      %th= Audio.human_attribute_name(:aasm_state)
+      %th= Audio.human_attribute_name(:created_at)
+      %th= Audio.human_attribute_name(:updated_at)
       %th=t '.actions', :default => t("helpers.actions")
   %tbody
     - @audios.each do |audio|
